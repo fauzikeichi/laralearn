@@ -1,0 +1,33 @@
+######################################ERROR 1############################################################
+Update after laravel 11.0.3
+Workaround is not needed, they reverted it right now https://github.com/laravel/laravel/pull/6372
+
+Before laravel 11.0.3
+after this commit and this discussion
+
+Now they fixed config so just use MariaDB connection:
+
+DB_CONNECTION=mariadb
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database
+DB_USERNAME=root
+DB_PASSWORD=
+After laravel 11 update:
+Laravel changed default DB_COLLATION from utf8mb4_unicode_ci to utf8mb4_0900_ai_ci
+
+When we are using mariadb (for example xampp in windows) there is no this kind of collation. According to this table.
+
+We have to use other collation. In your .env add:
+
+DB_COLLATION=utf8mb4_unicode_ci 
+so finally working .env:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=database
+DB_USERNAME=root
+DB_PASSWORD=
+DB_COLLATION=utf8mb4_unicode_ci 
+then php artisan migrate works.
