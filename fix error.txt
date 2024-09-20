@@ -1,4 +1,6 @@
 ######################################ERROR 1############################################################
+database/migration/ hapus file yang tidak berguna selain yang di create 
+######################################ERROR 1############################################################
 Update after laravel 11.0.3
 Workaround is not needed, they reverted it right now https://github.com/laravel/laravel/pull/6372
 
